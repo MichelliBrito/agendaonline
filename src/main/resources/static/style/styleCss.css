@@ -54,6 +54,14 @@
   color: blue; /* BG */
 }
 
+.linkNome{
+	color: black;
+}
+
+.linkNome:hover{
+	color: #009999;
+}
+
 .btn:hover, .btn-large:hover {
 	background-color: #00b359; /* BG */
 }

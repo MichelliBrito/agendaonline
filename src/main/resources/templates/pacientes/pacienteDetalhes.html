@@ -25,6 +25,7 @@
 			      <ul class="menuesquerda left hide-on-med-and-down">
 			        <li><a href="#">Pacientes</a></li>
 			        <li><div class="botao"><a href="/cadastrarpaciente" class="waves-effect waves-light btn"><i class="material-icons left">add_circle</i>Cadastrar Paciente</a></div></li>
+			        <li><div class="botao"><a href="/pacientes" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Pacientes</a></div></li>
 			      </ul>
 			      <ul id="nav-mobile" class="menudireita right hide-on-med-and-down">
 			        <li><a href="#">Login</a></li>
@@ -46,32 +47,16 @@
 	  <!-- SECTION -->
 	  <section class="conteudo" th:fragment="conteudo"> <!-- section com conteudo criado aqui nesta mesma página -->
 		  <!-- Conteudo -->
-		  <table class="responsive-table highlight">
-		  	<thead>
-			  <tr>
-			  			<th>Nome</th>		
-			  			<th>Telefone</th> 		
-			  			<th>Email</th>
-			  			<th>Editar</th>
-			  			<th>Remover</th>
-			  </tr>
-			</thead>
-			<tbody>
-			  <tr th:each="paciente : ${pacientes}">
+			  <div class="row" th:each="paciente : ${paciente}">
 			  		
-			  			<td><a th:href="${(#mvc.url('PC#detalhes').arg(0, paciente.nome)).build()}" class="linkNome" role="button"><span th:text="${paciente.nome}"></span></a></td>
+			  			<p><span th:text="${paciente.nome}"></span></p>
 			  		
-			  			<td><span th:text="${paciente.telefone}"></span></td>
+			  			<p><span th:text="${paciente.telefone}"></span></p>
 			  		
-			  			<td><span th:text="${paciente.email}"></span></td>
+			  			<p><span th:text="${paciente.email}"></span></p>
 			  			
-			  			<td><a class="waves-effect waves-light btn-small editar"><i class="material-icons left">edit</i>Editar</a></td>
-				  			
-				  		<td><a class="waves-effect waves-light btn-small remover"><i class="material-icons left">delete</i>Remover</a></td>
-			  	
-			  </tr>
-			</tbody>
-		  </table>
+		
+			  	</div>
 	  </section>
   
   <!--Import jQuery before materialize.js-->
