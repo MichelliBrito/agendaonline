@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	  <title>AgendaOnline</title>
+	<!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link rel="stylesheet" href="style/styleCss.css"/>
+
+</head>
+<body>
+
+	  <!-- HEADER -->
+	  <header th:fragment="header">
+		<div class="navbar-fixed">
+		<nav class="menu">
+		    <div class="nav-wrapper">
+		     
+		      <div class="menu-itens">
+			      <ul class="menuesquerda left hide-on-med-and-down">
+			        <li><a href="#">Agenda - Dr. Michelli</a></li>
+			        <li><div class="botao"><a href="/agendarconsulta" class="waves-effect waves-light btn"><i class="material-icons left">add_circle</i>Agendar Consulta</a></div></li>
+			        <li><div class="botao"><a class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Espera</a></div></li>
+			      </ul>
+			      <ul id="nav-mobile" class="menudireita right hide-on-med-and-down">
+			        <li><a href="#">Login</a></li>
+			        <li><a href="#">Usuário</a></li>
+			        <li><a href="#">Empresa</a></li>
+			      </ul>
+		      </div>
+		      
+		    </div>
+		  </nav>
+		  </div>
+	  </header>
+	
+	
+	 <!-- ASIDE -->
+	  <div th:replace="LayoutPadrao:: aside"></div> <!-- Carregando o aside do arquivo externo layoutPadrao -->
+	  
+	  
+	  <!-- SECTION -->
+	  <section class="conteudo" th:fragment="conteudo"> <!-- section com conteudo criado aqui nesta mesma página -->
+		  <!-- Conteudo -->
+		  <table class="responsive-table">
+			  <thead>
+			  	<tr>
+			  			<th>Procedimento</th>
+			  			<th>Paciente</th>
+			  			<th>Data</th>
+			  			<th>Início</th>
+			  			<th>Término</th>
+			  			<th>Editar</th>
+			  			<th>Remover</th>
+			  	</tr>
+			  </thead>
+			  <tbody>
+				  <tr th:each="consulta : ${consultas}">
+				  		
+				  			<td><span th:text="${consulta.procedimento.tipoProcedimento}"></span></td>
+				  		
+				  			<td><span th:text="${consulta.paciente.nome}"></span></td>
+				  		
+				  			<td><span th:text="${consulta.data}"></span></td>
+				  		
+				  			<td><span th:text="${consulta.horarioInicio}"></span></td>
+				  		
+				  			<td><span th:text="${consulta.horarioTermino}"></span></td>
+				  			
+				  			<td><a class="waves-effect waves-light btn-small editar"><i class="material-icons left">edit</i>Editar</a></td>
+				  			
+				  			<td><a class="waves-effect waves-light btn-small remover"><i class="material-icons left">delete</i>Remover</a></td>
+				  </tr>
+			  </tbody>
+		  </table>
+	  </section>
+  
+  <!--Import jQuery before materialize.js-->
+  	  <script src="jquery/jquery-3.2.1.js"></script>
+	  <script src="jquery/main.js"></script>
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+      
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	  <title>AgendaOnline</title>
+	<!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link rel="stylesheet" href="style/styleCss.css"/>
+
+</head>
+<body>
+
+	  <!-- HEADER -->
+	  <header th:fragment="header">
+		<div class="navbar-fixed">
+		<nav class="menu">
+		    <div class="nav-wrapper">
+		     
+		      <div class="menu-itens">
+			      <ul class="menuesquerda left hide-on-med-and-down">
+			        <li><a href="#">Pacientes</a></li>
+			        <li><div class="botao"><a href="/pacientes" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Pacientes</a></div></li>
+			      </ul>
+			      <ul id="nav-mobile" class="menudireita right hide-on-med-and-down">
+			        <li><a href="#">Login</a></li>
+			        <li><a href="#">Usuário</a></li>
+			        <li><a href="#">Empresa</a></li>
+			      </ul>
+		      </div>
+		      
+		    </div>
+		  </nav>
+		  </div>
+	  </header>
+	
+	
+	 <!-- ASIDE -->
+	  <div th:replace="LayoutPadrao:: aside"></div> <!-- Carregando o aside do arquivo externo layoutPadrao -->
+	  
+	  
+	  <!-- SECTION -->
+	  <section th:fragment="conteudo"> <!-- section com conteudo criado aqui nesta mesma página -->
+		  <!-- Conteudo -->
+		  <form  method="post" th:object="${paciente}">
+				<div class="form"> 
+					  <div class="row"> 
+						  	<div class="input-field col s9">
+						  		Nome: <input type="text" value="" class="form-control" id="" name="nome"/>
+						  	</div>
+					  </div>
+					  
+					  <div class="row"> 
+					  		<div class="input-field col s3">
+						  		Nascimento: <input type="date" value="dd-mm-yyyy" class="form-control" id="" name="nascimento"/>
+						  	</div>
+					  		<div class="input-field col s3">
+							    <select name="sexo">
+							      <option value="">Sexo</option>
+							      <option value="feminino">Feminino</option>
+							      <option value="masculino">Masculino</option>
+							    </select>
+							</div>
+							<div class="input-field col s3">
+							    <select name="convenio.nomeConvenio">
+							    	<option value="">Convênio</option>
+								      <option th:each="convenio : ${convenios}" th:value="${convenio.nomeConvenio}" th:text="${convenio.nomeConvenio}"></option>
+							    </select>
+							</div>
+					  </div>
+					  	
+					  <div class="row"> 
+						  	<div class="input-field col s6">
+						  		Endereço: <input type="text" value="" class="form-control" id="" name="endereco"/>
+						  	</div>
+						  	<div class="input-field col s1">
+						  		Número: <input type="text" value="" class="form-control" id="" name="numero"/>
+						  	</div>
+						  	<div class="input-field col s2">
+						  		Bairro: <input type="text" value="" class="form-control" id="" name="bairro"/>
+						  	</div>
+					  </div> 
+					  
+					  <div class="row"> 
+						  	<div class="input-field col s6">
+						  		Cidade: <input type="text" value="" class="form-control" id="" name="cidade"/>
+						  	</div>
+						  	<div class="input-field col s1">
+						  		CEP: <input type="text" value="" class="form-control" id="" name="cep"/>
+						  	</div>
+						  	<div class="input-field col s2">
+						  		Estado: <input type="text" value="" class="form-control" id="" name="estado"/>
+						  	</div>
+					  </div> 
+					  
+					  <div class="row"> 
+						  	<div class="input-field col s3">
+						  		Telefone: <input type="text" value="" class="form-control" id="" name="telefone"/>
+						  	</div>
+						  	<div class="input-field col s6">
+						  		email: <input type="text" value="" class="form-control" id="" name="email"/>
+						  	</div>
+					  </div>
+					  
+					  <div class="row"> 
+						  	<div class="input-field col s9">
+						  		Observação: <input type="text" value="" class="form-control" id="" name="observacao"/>
+						  	</div>
+					  </div>
+					  <button class="btn waves-effect waves-light" type="submit">Salvar</button>
+			   </div> 
+		  </form>
+		  
+	  </section>
+  
+  <!--Import jQuery before materialize.js-->
+  	  <script src="jquery/jquery-3.2.1.js"></script>
+	  <script src="jquery/main.js"></script>
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+      
+</body>
+</html>

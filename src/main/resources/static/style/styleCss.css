@@ -1,0 +1,76 @@
+/* Layout padrao */
+.menu-itens{
+	padding-left: 10px;
+}
+
+.menu-icones{
+	padding-right: 50px;
+}
+
+.menu{
+	background-color: #009999;
+}
+
+.menu-lateral{
+	color: #009999;
+	
+}
+
+.user-view{
+	text-align:center;
+	border-bottom: solid 1px #009999;
+}
+
+.user-view h7{
+	margin-top: 20px;
+	font-size: 1.30rem;
+	text-align: left;
+}
+
+.user-view i{
+	margin-top: 20px;
+	font-size: 1.60rem;
+	text-align: right;
+}
+
+.side-nav{
+	width: 250px;
+}
+
+.navbar-fixed{
+	padding-left: 250px;
+}
+
+.btn, .btn-large { 
+  background-color: #00b359; /* BG */
+  color: white; /* Text */
+}
+
+.remover{ 
+  color: red; /* BG */
+}
+
+.editar{ 
+  color: blue; /* BG */
+}
+
+.btn:hover, .btn-large:hover {
+	background-color: #00b359; /* BG */
+}
+
+.menudireita{
+	padding-right: 300px;
+}
+
+.form{
+	padding-left: 300px;
+}
+
+.conteudo{
+	padding-left: 300px;
+}
+
+table {
+    width: 95%;
+    display: table;
+}
