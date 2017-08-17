@@ -50,12 +50,12 @@ public class PacientesController {//terminar, colocar remove e edite
 		return "redirect:/pacientes";
 	}
 	
-//	@RequestMapping(value="/{nome}", method = RequestMethod.GET)
-//	public ModelAndView detalhes(@PathVariable("nome") String nome){
-//		ModelAndView mv = new ModelAndView("pacientes/pacienteDetalhes");
-//		Paciente paciente = pr.findOne(nome);
-//		mv.addObject("paciente", paciente);
-//		System.out.println(paciente.getEmail());
-//		return mv;
-//	}
+	@RequestMapping(value="/{nome}", method = RequestMethod.GET)
+	public ModelAndView detalhes(@PathVariable("nome") String nome){
+		ModelAndView mv = new ModelAndView("pacientes/pacienteDetalhes");
+		Paciente paciente = pr.findOne(nome);
+		mv.addObject("paciente", paciente);
+		System.out.println(paciente.getEmail());
+		return mv;
+	}
 }

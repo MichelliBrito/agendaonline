@@ -89,7 +89,7 @@ public class AgendaController {
 		return "redirect:/agenda";
 	}
 	
-	@RequestMapping(value="/{codigo}", method = RequestMethod.GET)
+	@RequestMapping(value="/consulta/{codigo}", method = RequestMethod.GET)
 	public ModelAndView detalhesConsulta(@PathVariable("codigo") long codigo){
 		ModelAndView mv = new ModelAndView("agenda/consultaDetalhes");
 		

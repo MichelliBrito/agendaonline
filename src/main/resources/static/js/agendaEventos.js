@@ -35,9 +35,8 @@ $(document).ready(function() {
 	$('#calendar').fullCalendar({
 	    events: [
 	        {
-	            url: '{codigo}'
+	            url: 'consulta/{codigo}'
 	        }
-	        // other events here
 	    ],
 	    eventClick: function(event) {
 	        if (event.url) {

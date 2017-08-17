@@ -20,7 +20,8 @@ public class Evento implements Serializable{
 	private String title;
 	private String start;
 	private String end;
-	private String url;
+	private long url;
+	private String link;
 	private String data;
 	
 	public Evento(){
@@ -31,8 +32,15 @@ public class Evento implements Serializable{
 		this.title = consulta.getPaciente().getNome();
 		this.start = consulta.getHorarioInicio();
 		this.end = consulta.getHorarioTermino();
-		//this.url = consulta.getCodigo();
+		this.url = consulta.getCodigo();
 		this.data = consulta.getData();
+	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "" + url + "";
 	}
 
 	public String getTitle() {
@@ -62,12 +70,13 @@ public class Evento implements Serializable{
 	}
 
 	public String getUrl() {
-		String url = "http://localhost:8080/";
-		System.out.println("http://localhost:8080/");
-		return url;
+		this.link = "http://localhost:8080/consulta/";
+		String newUrl = this.link.concat(this.toString());
+		System.out.println(newUrl);
+		return newUrl;
 	}
 
-	public void setUrl(String url) {
+	public void setUrl(long url) {
 		this.url = url;
 	}
 
