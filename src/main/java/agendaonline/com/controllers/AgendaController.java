@@ -57,17 +57,6 @@ public class AgendaController {
 		return listaEventos;
 	}
 	
-//	@RequestMapping(value="/agenda", method = RequestMethod.GET)
-//	public ModelAndView agenda(){
-//		ModelAndView mv = new ModelAndView("agenda/agenda");
-//		LocalDate data = LocalDate.now();
-//		String dataFormatada = data.toString();
-//		System.out.println("a data do sistema é:" + dataFormatada);
-//		Iterable<Consulta> listaConsultas = cr.findByData(dataFormatada);
-//		mv.addObject("consultas", listaConsultas);
-//		return mv;
-//	}
-	
 	@RequestMapping(value="/agendarconsulta", method=RequestMethod.GET)
 	public String agendarConsulta(Model model){
 		Iterable<Procedimento> listaProcedimentos = pr.findAll();

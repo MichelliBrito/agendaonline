@@ -21,7 +21,6 @@ public class Evento implements Serializable{
 	private String start;
 	private String end;
 	private long url;
-	private String link;
 	private String data;
 	
 	public Evento(){
@@ -70,9 +69,8 @@ public class Evento implements Serializable{
 	}
 
 	public String getUrl() {
-		this.link = "http://localhost:8080/consulta/";
-		String newUrl = this.link.concat(this.toString());
-		System.out.println(newUrl);
+		String link = "http://localhost:8080/consulta/";
+		String newUrl = link.concat(this.toString());
 		return newUrl;
 	}
 
