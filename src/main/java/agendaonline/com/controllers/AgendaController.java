@@ -4,15 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import agendaonline.com.models.Consulta;
+import agendaonline.com.models.Evento;
 import agendaonline.com.models.Paciente;
 import agendaonline.com.models.Procedimento;
 import agendaonline.com.repositories.ConsultaRepository;
+import agendaonline.com.repositories.EventoRepository;
 import agendaonline.com.repositories.PacienteRepository;
 import agendaonline.com.repositories.ProcedimentoRepository;
 
@@ -28,13 +32,41 @@ public class AgendaController {
 	@Autowired
 	private PacienteRepository par;
 	
-	@RequestMapping("/agenda")
-	public ModelAndView agenda(){
+	@Autowired
+	private EventoRepository er;
+	
+	@RequestMapping(value = "/teste", method = RequestMethod.GET)
+	public String Teste() {
+
+		return "dashboard";
+	}
+	
+	@RequestMapping(value = "/agenda", method = RequestMethod.GET)
+	public ModelAndView MontaAgenda() {
+		 
 		ModelAndView mv = new ModelAndView("agenda/agenda");
-		Iterable<Consulta> listaConsultas = cr.findAll();
-		mv.addObject("consultas", listaConsultas);
+
 		return mv;
 	}
+	
+	@RequestMapping(value="/getEventos.json", method = RequestMethod.GET)
+	public @ResponseBody Iterable<Evento> agenda(){
+		
+		Iterable<Evento> listaEventos = er.findAll();
+		
+		return listaEventos;
+	}
+	
+//	@RequestMapping(value="/agenda", method = RequestMethod.GET)
+//	public ModelAndView agenda(){
+//		ModelAndView mv = new ModelAndView("agenda/agenda");
+//		LocalDate data = LocalDate.now();
+//		String dataFormatada = data.toString();
+//		System.out.println("a data do sistema é:" + dataFormatada);
+//		Iterable<Consulta> listaConsultas = cr.findByData(dataFormatada);
+//		mv.addObject("consultas", listaConsultas);
+//		return mv;
+//	}
 	
 	@RequestMapping(value="/agendarconsulta", method=RequestMethod.GET)
 	public String agendarConsulta(Model model){
@@ -52,7 +84,16 @@ public class AgendaController {
 //		return cadastrarPaciente();
 //	}		
 		cr.save(consulta);
+		Evento evento = new Evento(consulta);
+		er.save(evento);
 		return "redirect:/agenda";
+	}
+	
+	@RequestMapping(value="/{codigo}", method = RequestMethod.GET)
+	public ModelAndView detalhesConsulta(@PathVariable("codigo") long codigo){
+		ModelAndView mv = new ModelAndView("agenda/consultaDetalhes");
+		
+		return mv;
 	}
 
 }

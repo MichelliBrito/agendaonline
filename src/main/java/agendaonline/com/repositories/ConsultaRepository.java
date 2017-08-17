@@ -6,4 +6,7 @@ import agendaonline.com.models.Consulta;
 
 public interface ConsultaRepository extends CrudRepository<Consulta, String>{
 
+
+	Iterable<Consulta> findByData(String data);
+	Iterable<Consulta> findByCodigo(long codigo);
 }
