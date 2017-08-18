@@ -77,7 +77,7 @@ public class Evento implements Serializable{
 
 	public String getUrl() {
 		//String link = "http://localhost:8080/consulta/";
-		String link = "https://appagendaonline.herokuapp.com/consulta";
+		String link = "https://appagendaonline.herokuapp.com/consulta/";
 		String newUrl = link.concat(this.toString());
 		return newUrl;
 	}
