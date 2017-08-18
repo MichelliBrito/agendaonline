@@ -8,10 +8,11 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 //@Configuration
-public class DataConfiguration {
-
+public class DataConfiguration extends WebMvcConfigurerAdapter{
+//
 //	@Bean
 //    public DataSource dataSource(){//cria um bean datasource, ou seja, uma conexao com o banco mysql
 //        DriverManagerDataSource dataSource = new DriverManagerDataSource();
