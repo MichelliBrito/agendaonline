@@ -17,9 +17,9 @@ public class Evento implements Serializable{
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private long codigo;
 	
-	private String title;
-	private String start;
-	private String end;
+	private String titulo;
+	private String comeco;
+	private String fim;
 	private long url;
 	private String data;
 	
@@ -28,9 +28,9 @@ public class Evento implements Serializable{
 	}
 	
 	public Evento(Consulta consulta){
-		this.title = consulta.getPaciente().getNome();
-		this.start = consulta.getHorarioInicio();
-		this.end = consulta.getHorarioTermino();
+		this.titulo = consulta.getPaciente().getNome();
+		this.comeco = consulta.getHorarioInicio();
+		this.fim = consulta.getHorarioTermino();
 		this.url = consulta.getCodigo();
 		this.data = consulta.getData();
 	}
@@ -42,30 +42,30 @@ public class Evento implements Serializable{
 		return "" + url + "";
 	}
 
-	public String getTitle() {
-		return title;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
-	public String getStart() {
-		start = data + " " + start;
-		return start;
+	public String getComeco() {
+		comeco = data + " " + comeco;
+		return comeco;
 	}
 
-	public void setStart(String start) {
-		this.start = start;
+	public void setComeco(String comeco) {
+		this.comeco = comeco;
 	}
 
-	public String getEnd() {
-		end = data + " " + end;
-		return end;
+	public String getFim() {
+		fim = data + " " + fim;
+		return fim;
 	}
 
-	public void setEnd(String end) {
-		this.end = end;
+	public void setFim(String fim) {
+		this.fim = fim;
 	}
 
 	public String getUrl() {
