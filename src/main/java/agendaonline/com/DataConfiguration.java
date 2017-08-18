@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 //@Configuration
 public class DataConfiguration extends WebMvcConfigurerAdapter{
-//
+
 //	@Bean
 //    public DataSource dataSource(){//cria um bean datasource, ou seja, uma conexao com o banco mysql
 //        DriverManagerDataSource dataSource = new DriverManagerDataSource();

@@ -2,6 +2,7 @@ package agendaonline.com.models;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,9 +18,14 @@ public class Evento implements Serializable{
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private long codigo;
 	
-	private String titulo;
-	private String comeco;
-	private String fim;
+	private String title;
+	
+	@Column(name = "comeco")
+	private String start;
+	
+	@Column(name = "fim")
+	private String end;
+	
 	private long url;
 	private String data;
 	
@@ -28,9 +34,9 @@ public class Evento implements Serializable{
 	}
 	
 	public Evento(Consulta consulta){
-		this.titulo = consulta.getPaciente().getNome();
-		this.comeco = consulta.getHorarioInicio();
-		this.fim = consulta.getHorarioTermino();
+		this.title = consulta.getPaciente().getNome();
+		this.start = consulta.getHorarioInicio();
+		this.end = consulta.getHorarioTermino();
 		this.url = consulta.getCodigo();
 		this.data = consulta.getData();
 	}
@@ -42,30 +48,30 @@ public class Evento implements Serializable{
 		return "" + url + "";
 	}
 
-	public String getTitulo() {
-		return titulo;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public String getComeco() {
-		comeco = data + " " + comeco;
-		return comeco;
+	public String getStart() {
+		start = data + " " + start;
+		return start;
 	}
 
-	public void setComeco(String comeco) {
-		this.comeco = comeco;
+	public void setStart(String start) {
+		this.start = start;
 	}
 
-	public String getFim() {
-		fim = data + " " + fim;
-		return fim;
+	public String getEnd() {
+		end = data + " " + end;
+		return end;
 	}
 
-	public void setFim(String fim) {
-		this.fim = fim;
+	public void setEnd(String end) {
+		this.end = end;
 	}
 
 	public String getUrl() {
