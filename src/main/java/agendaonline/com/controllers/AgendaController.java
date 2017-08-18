@@ -73,8 +73,8 @@ public class AgendaController {
 //		return cadastrarPaciente();
 //	}		
 		cr.save(consulta);
-//		Evento evento = new Evento(consulta);
-//		er.save(evento);
+		Evento evento = new Evento(consulta);
+		er.save(evento);
 		return "redirect:/agenda";
 	}
 	
