@@ -27,6 +27,7 @@ public class Evento implements Serializable{
 	private String end;
 	
 	private long url;
+	
 	private String data;
 	
 	public Evento(){
