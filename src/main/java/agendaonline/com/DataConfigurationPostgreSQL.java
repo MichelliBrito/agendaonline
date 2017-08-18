@@ -14,7 +14,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
-public class DataConfigurationPostgreSQL extends WebMvcConfigurerAdapter{
+public class DataConfigurationPostgreSQL{
 
 	@Bean
     public BasicDataSource dataSource() throws URISyntaxException {
@@ -31,16 +31,5 @@ public class DataConfigurationPostgreSQL extends WebMvcConfigurerAdapter{
 
         return basicDataSource;
     }
-	
-	@Bean
-	public JpaVendorAdapter jpaVendorAdapter(){//cria um bean Hibernate
-		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
-		adapter.setDatabase(Database.POSTGRESQL);
-		adapter.setShowSql(true);//mostrar codigo sql no console.
-		adapter.setGenerateDdl(true);//habilita para que o hibernate crie as tabelas automaticamente.
-		adapter.setDatabasePlatform("org.hibernate.dialect.PostgreSQLDialect");
-		adapter.setPrepareConnection(true);
-		return adapter;
-	}
 }
 
