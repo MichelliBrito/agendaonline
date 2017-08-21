@@ -6,12 +6,12 @@
 	<!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
       <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" th:href="@{/materialize/css/materialize.min.css}"  media="screen,projection"/>
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <link rel="stylesheet" href="style/styleCss.css"/>
-      <link href="style/fullcalendar.min.css" rel="stylesheet" /> 
+      <link rel="stylesheet" th:href="@{/style/styleCss.css}"/>
+      <link th:href="@{/style/fullcalendar.min.css}" rel="stylesheet" /> 
 	  
 
 </head>
@@ -64,9 +64,9 @@
 			  			
 			  			<p>Término:  <span th:text="${consulta.horarioTermino}"></span></p>
 			  			
-			  			<a class="waves-effect waves-light btn editarlarge"><i class="material-icons left">edit</i>Editar</a>
+			  			<a class="waves-effect waves-light btn-small editar"><i class="material-icons left">edit</i>Editar</a>
 				  			
-						<a class="waves-effect waves-light btn removerlarge"><i class="material-icons left">delete</i>Remover</a>
+						<a class="waves-effect waves-light btn-small remover"><i class="material-icons left">delete</i>Remover</a>
 			  		
 			  		</div>	
 			  		
@@ -85,15 +85,15 @@
 
   	
   <!--Import jQuery before materialize.js-->
-  	  <script src="js/jquery.min.js"></script>
-	  <script src="js/moment.min.js"></script>
-	  <script src="js/fullcalendar.min.js"></script>
-	  <script src="js/lang-all.js"></script>
-	  <script src="js/agendaEventos.js"></script>
+  	  <script th:src="@{/js/jquery.min.js}"></script>
+	  <script th:src="@{/js/moment.min.js}"></script>
+	  <script th:src="@{/js/fullcalendar.min.js}"></script>
+	  <script th:src="@{/js/lang-all.js}"></script>
+	  <script th:src="@{/js/agendaEventos.js}"></script>
 	  
   	  <!-- <script src="jquery/jquery-3.2.1.js"></script> -->
 	  <!--  <script src="jquery/main.js"></script>-->
-      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+      <script type="text/javascript" th:src="@{/materialize/js/materialize.min.js}"></script>
       
 </body>
 </html>

@@ -15,6 +15,7 @@ import agendaonline.com.models.Consulta;
 import agendaonline.com.models.Evento;
 import agendaonline.com.models.Paciente;
 import agendaonline.com.models.Procedimento;
+import agendaonline.com.models.Prontuario;
 import agendaonline.com.repositories.ConsultaRepository;
 import agendaonline.com.repositories.EventoRepository;
 import agendaonline.com.repositories.PacienteRepository;
@@ -78,12 +79,19 @@ public class AgendaController {
 		return "redirect:/agenda";
 	}
 	
-	@RequestMapping(value="/{codigo}", method = RequestMethod.GET)
+	@RequestMapping(value="consulta/{codigo}", method = RequestMethod.GET)
 	public ModelAndView detalhesConsulta(@PathVariable("codigo") long codigo){
 		ModelAndView mv = new ModelAndView("agenda/consultaDetalhes");
 		Consulta consulta = cr.findByCodigo(codigo);
 		mv.addObject("consulta", consulta);
 		return mv;
+	}
+	
+	@RequestMapping(value="/{codigo}", method = RequestMethod.POST)//gerar controller proprio para prontuario!!!
+	public String detalhesConsulta(@PathVariable("codigo") long codigo, Prontuario prontuario){
+
+		
+		return "redirect:/agenda";
 	}
 
 }
