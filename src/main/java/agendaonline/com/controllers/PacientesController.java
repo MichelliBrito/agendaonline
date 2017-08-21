@@ -50,7 +50,7 @@ public class PacientesController {//terminar, colocar remove e edite
 		return "redirect:/pacientes";
 	}
 	
-	@RequestMapping(value="/{nome}", method = RequestMethod.GET)
+	@RequestMapping(value="/paciente/{nome}", method = RequestMethod.GET)
 	public ModelAndView detalhes(@PathVariable("nome") String nome){
 		ModelAndView mv = new ModelAndView("pacientes/pacienteDetalhes");
 		Paciente paciente = pr.findOne(nome);

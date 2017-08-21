@@ -1,5 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	  <title>AgendaOnline</title>
+	<!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link rel="stylesheet" href="style/styleCss.css"/>
+      <link href="style/fullcalendar.min.css" rel="stylesheet" /> 
+	  
+
+</head>
 <body>
 
-<h1>Teste consulta detalhes!</h1>
+	  <!-- HEADER -->
+	  <header th:fragment="header">
+		<div class="navbar-fixed">
+		<nav class="menu">
+		    <div class="nav-wrapper">
+		     
+		      <div class="menu-itens">
+			      <ul class="menuesquerda left hide-on-med-and-down">
+			        <li><a href="#">Agenda - Dr. Michelli</a></li>
+			        <li><div class="botao"><a href="/agendarconsulta" class="waves-effect waves-light btn"><i class="material-icons left">add_circle</i>Agendar Consulta</a></div></li>
+			        <li><div class="botao"><a class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Espera</a></div></li>
+			      </ul>
+			      <ul id="nav-mobile" class="menudireita right hide-on-med-and-down">
+			        <li><a href="#">Login</a></li>
+			        <li><a href="#">Usuário</a></li>
+			        <li><a href="#">Empresa</a></li>
+			      </ul>
+		      </div>
+		      
+		    </div>
+		  </nav>
+		  </div>
+	  </header>
+	
+	
+	 <!-- ASIDE -->
+	  <div th:replace="LayoutPadrao:: aside"></div> <!-- Carregando o aside do arquivo externo layoutPadrao -->
+	  
+	  
+	  <!-- SECTION -->
+	  <section class="conteudo" th:fragment="conteudo"> <!-- section com conteudo criado aqui nesta mesma página -->
+		  <!-- Conteudo -->
+		  <div class="container cabecalho">
+			  <div class="row" th:each="consulta : ${consulta}">
+			  
+			  	<h4><span th:text="${consulta.procedimento.tipoProcedimento}"></span>      <a class="waves-effect waves-light btn"><i class="material-icons left">play_circle_outline</i>Iniciar</a></h4>
+			  
+			  		<div class="input-field col s6">			
+			  		
+			  			<p>Paciente: <span th:text="${consulta.paciente.nome}"></span></p>
+			  			
+			  			<p>Data:  <span th:text="${consulta.data}"></span></p>
+			  		
+			  			<p>Início:  <span th:text="${consulta.horarioInicio}"></span></p>
+			  			
+			  			<p>Término:  <span th:text="${consulta.horarioTermino}"></span></p>
+			  			
+			  			<a class="waves-effect waves-light btn editarlarge"><i class="material-icons left">edit</i>Editar</a>
+				  			
+						<a class="waves-effect waves-light btn removerlarge"><i class="material-icons left">delete</i>Remover</a>
+			  		
+			  		</div>	
+			  		
+			  		<div class="input-field col s6">
+			  			
+			  			<p>Status:  <span th:text="${consulta.status}"></span></p>
+			  			
+			  			<p>Observação:  <span th:text="${consulta.observacao}"></span></p>
+			  		
+			  		</div>
+			  		
+			  	</div>
+		 </div>
+	  </section>
+  
 
+  	
+  <!--Import jQuery before materialize.js-->
+  	  <script src="js/jquery.min.js"></script>
+	  <script src="js/moment.min.js"></script>
+	  <script src="js/fullcalendar.min.js"></script>
+	  <script src="js/lang-all.js"></script>
+	  <script src="js/agendaEventos.js"></script>
+	  
+  	  <!-- <script src="jquery/jquery-3.2.1.js"></script> -->
+	  <!--  <script src="jquery/main.js"></script>-->
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+      
 </body>
+</html>

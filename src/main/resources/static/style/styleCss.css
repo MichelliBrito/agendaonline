@@ -48,11 +48,21 @@
 }
 
 .remover{ 
-  color: red; /* BG */
+  color: #ff4d4d; /* BG */
 }
 
 .editar{ 
-  color: blue; /* BG */
+  color: #0066ff; /* BG */
+}
+
+.removerlarge{ 
+  color: white; /* BG */
+  background-color: #ff4d4d;
+}
+
+.editarlarge{ 
+  color: white; /* BG */
+  background-color: #0066ff;
 }
 
 .linkNome{
@@ -63,9 +73,10 @@
 	color: #009999;
 }
 
+/*
 .btn:hover, .btn-large:hover {
-	background-color: #00b359; /* BG */
-}
+	background-color: #00b359;}  BG */
+
 
 .menudireita{
 	padding-right: 300px;
@@ -84,4 +95,24 @@ table {
     display: table;
 }
 
+.cabecalho{
+	width: 80%;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    margin: 85px;
+    background-color: #009999;
+    color: white;
+    box-shadow: 0px 0px 5px grey;
+}
 
+.topicos{
+	width: 90%;
+	border: 1px white;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    margin: 85px;
+    color: black;
+    box-shadow: 0px 0px 5px grey;
+}
