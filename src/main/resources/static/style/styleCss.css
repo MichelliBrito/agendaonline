@@ -48,11 +48,11 @@
 }
 
 .remover{ 
-  color: #ff4d4d; /* BG */
+  color: #ff0000; /* BG */
 }
 
 .editar{ 
-  color: #0066ff; /* BG */
+  color: #3333ff; /* BG */
 }
 
 .removerlarge{ 
@@ -63,6 +63,11 @@
 .editarlarge{ 
   color: white; /* BG */
   background-color: #0066ff;
+}
+
+.finalizar{
+	color: white; /* BG */
+  background-color: #ff4d4d;
 }
 
 .linkNome{
@@ -84,6 +89,16 @@
 
 .form{
 	padding-left: 300px;
+	box-shadow: 0px 0px 5px grey;
+}
+
+.formProntuario{
+	width: 80%;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    margin: 85px;
+    box-shadow: 0px 0px 5px grey;
 }
 
 .conteudo{
@@ -100,7 +115,7 @@ table {
     padding-left: 20px;
     padding-top: 10px;
     padding-bottom: 5px;
-    margin: 85px;
+    margin: 50px 85px 50px 85px;
     background-color: #009999;
     color: white;
     box-shadow: 0px 0px 5px grey;
@@ -112,7 +127,7 @@ table {
     padding-left: 20px;
     padding-top: 10px;
     padding-bottom: 5px;
-    margin: 85px;
+    margin: 30px 85px 30px 85px;
     color: black;
     box-shadow: 0px 0px 5px grey;
 }

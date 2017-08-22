@@ -50,7 +50,7 @@
 		  <div class="container cabecalho">
 			  <div class="row" th:each="paciente : ${paciente}">
 			  
-			  	<h4><span th:text="${paciente.nome}"></span></h4>
+			  	<h4><span th:text="${paciente.nome}"></span>    <a href="/agendarconsulta" class="waves-effect waves-light btn"><i class="material-icons left">add_circle</i>Agendar Consulta</a></h4>
 			  
 			  		<div class="input-field col s6">			
 			  		
@@ -73,17 +73,17 @@
 			  			<p>Observação:  <span th:text="${paciente.observacao}"></span></p>
 			  		
 			  		</div>	
-			  	<a class="waves-effect waves-light btn editarlarge"><i class="material-icons left">edit</i>Editar</a>
+			  	<a class="waves-effect waves-light btn-small editar"><i class="material-icons left">edit</i>Editar</a>
 				  			
-				<a class="waves-effect waves-light btn removerlarge"><i class="material-icons left">delete</i>Remover</a>
+				<a class="waves-effect waves-light btn-small remover"><i class="material-icons left">delete</i>Remover</a>
 		
 			  	</div>
 		 </div>
 		 
 		 <div class="container">
-		 	<div class="row topicos">
-			 		<p>prontuario</p>
-			 		<p>data</p>
+		 	<div class="row topicos" th:each="prontuario : ${prontuarios}">
+			 		<p><a th:href="${(#mvc.url('PC#prontuarioDetalhes').arg(0, prontuario.data)).build()}" class="linkNome">Prontuário:  <span th:text="${prontuario.data}"></span></a></p>
+			 		<p>Procedimento: <span th:text="${prontuario.procedimento.tipoProcedimento}"></span></p>
 			 		<a class="waves-effect waves-light btn-small editar"><i class="material-icons left">edit</i>Editar</a>		
 					<a class="waves-effect waves-light btn-small remover"><i class="material-icons left">delete</i>Remover</a>
 		 	</div>

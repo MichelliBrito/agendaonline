@@ -52,10 +52,10 @@
 		  <div class="container cabecalho">
 			  <div class="row" th:each="consulta : ${consulta}">
 			  
-			  	<h4><span th:text="${consulta.procedimento.tipoProcedimento}"></span>    <a  th:href="${(#mvc.url('AC#formProntuario').arg(0, consulta.codigo)).build()}" class="waves-effect waves-light btn"><i class="material-icons left">play_circle_outline</i>Iniciar</a></h4>
+			  	<h4><span th:text="${consulta.procedimento.tipoProcedimento}"></span>      <a href="/agenda" class="waves-effect waves-light btn finalizar"><i class="material-icons left">stop</i>Finalizar</a></h4>
 			  
 			  		<div class="input-field col s6">			
-		
+			  		
 			  			<p>Paciente: <span th:text="${consulta.paciente.nome}"></span></p>
 			  			
 			  			<p>Data:  <span th:text="${consulta.data}"></span></p>
@@ -80,6 +80,48 @@
 			  		
 			  	</div>
 		 </div>
+		 
+		 <form  method="post" th:object="${prontuario}">
+				<div class="container formProntuario"> 
+					
+					  <div class="row"> 
+					  		<div class="input-field col s12">
+						  		Anamnese: <input type="text" value="" class="form-control" id="" name="anamnese"/>
+						  	</div>
+					  </div>
+					  <div class="row"> 
+					  		<div class="input-field col s12">
+						  		Diagnóstico: <input type="text" value="" class="form-control" id="" name="diagnostico"/>
+						  	</div>
+					  </div>
+					  <div class="row"> 
+					  		<div class="input-field col s12">
+						  		Procedimento realizado: <input type="text" value="" class="form-control" id="" name="procedimentoRealizado"/>
+						  	</div>
+					  </div>
+					  <div class="row"> 
+					  		<div class="input-field col s12">
+						  		Prescrição de Remédios: <input type="text" value="" class="form-control" id="" name="prescricaoRemedios"/>
+						  	</div>
+					  </div>
+					  <div class="row"> 
+					  		<div class="input-field col s12">
+						  		Prescrição de Exames: <input type="text" value="" class="form-control" id="" name="prescricaoExames"/>
+						  	</div>
+					  </div>
+					  <div class="row"> 
+					  		<div class="input-field col s12">
+						  		Resultados: <input type="text" value="" class="form-control" id="" name="resultados"/>
+						  	</div>
+					  </div>
+					  <div class="row"> 
+					  		<div class="input-field col s12">
+						  		Observação: <input type="text" value="" class="form-control" id="" name="observacao"/>
+						  	</div>
+					  </div>
+					  <button class="btn waves-effect waves-light" type="submit">Salvar</button>
+			   </div> 
+		  </form>
 	  </section>
   
 

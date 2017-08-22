@@ -12,8 +12,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import agendaonline.com.models.Convenio;
 import agendaonline.com.models.Paciente;
+import agendaonline.com.models.Prontuario;
 import agendaonline.com.repositories.ConvenioRepository;
 import agendaonline.com.repositories.PacienteRepository;
+import agendaonline.com.repositories.ProntuariosRepository;
 
 @Controller
 public class PacientesController {//terminar, colocar remove e edite
@@ -23,6 +25,9 @@ public class PacientesController {//terminar, colocar remove e edite
 	
 	@Autowired
 	private ConvenioRepository cr;
+	
+	@Autowired
+	private ProntuariosRepository prr;
 	
 	@RequestMapping("/pacientes")
 	public ModelAndView listaPacientes(){
@@ -55,7 +60,19 @@ public class PacientesController {//terminar, colocar remove e edite
 		ModelAndView mv = new ModelAndView("pacientes/pacienteDetalhes");
 		Paciente paciente = pr.findOne(nome);
 		mv.addObject("paciente", paciente);
-		System.out.println(paciente.getEmail());
+		
+		Iterable<Prontuario> prontuarios = prr.findByPaciente(paciente);
+		mv.addObject("prontuarios", prontuarios);
+		return mv;
+	}
+	
+	@RequestMapping(value="/prontuario/detalhes/{data}", method = RequestMethod.GET)
+	public ModelAndView prontuarioDetalhes(@PathVariable("data") String data){
+		ModelAndView mv = new ModelAndView("prontuario/prontuarioDetalhes");
+		System.out.println("data" + data);
+		Prontuario prontuario = prr.findByData(data);
+		mv.addObject("prontuario", prontuario);
+		System.out.println("prontuariooo" + prontuario);
 		return mv;
 	}
 }

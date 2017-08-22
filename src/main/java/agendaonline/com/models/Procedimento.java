@@ -14,6 +14,9 @@ public class Procedimento {
 	
 	@OneToMany
 	private List<Consulta> consultas;
+	
+	@OneToMany
+	private List<Prontuario> prontuario;
 
 	public String getTipoProcedimento() {
 		return tipoProcedimento;

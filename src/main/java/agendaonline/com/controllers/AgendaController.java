@@ -1,5 +1,10 @@
 package agendaonline.com.controllers;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +25,7 @@ import agendaonline.com.repositories.ConsultaRepository;
 import agendaonline.com.repositories.EventoRepository;
 import agendaonline.com.repositories.PacienteRepository;
 import agendaonline.com.repositories.ProcedimentoRepository;
+import agendaonline.com.repositories.ProntuariosRepository;
 
 @Controller
 public class AgendaController {
@@ -35,6 +41,9 @@ public class AgendaController {
 	
 	@Autowired
 	private EventoRepository er;
+	
+	@Autowired
+	private ProntuariosRepository prr;
 	
 	@RequestMapping(value = "/teste", method = RequestMethod.GET)
 	public String Teste() {
@@ -79,7 +88,7 @@ public class AgendaController {
 		return "redirect:/agenda";
 	}
 	
-	@RequestMapping(value="consulta/{codigo}", method = RequestMethod.GET)
+	@RequestMapping(value="/consulta/{codigo}", method = RequestMethod.GET)
 	public ModelAndView detalhesConsulta(@PathVariable("codigo") long codigo){
 		ModelAndView mv = new ModelAndView("agenda/consultaDetalhes");
 		Consulta consulta = cr.findByCodigo(codigo);
@@ -87,11 +96,37 @@ public class AgendaController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/{codigo}", method = RequestMethod.POST)//gerar controller proprio para prontuario!!!
-	public String detalhesConsulta(@PathVariable("codigo") long codigo, Prontuario prontuario){
-
-		
-		return "redirect:/agenda";
+	@RequestMapping(value="/prontuario/{codigo}", method = RequestMethod.GET)
+	public ModelAndView formProntuario(@PathVariable("codigo") long codigo){
+		ModelAndView mv = new ModelAndView("prontuario/form");
+		Consulta consulta = cr.findByCodigo(codigo);
+		mv.addObject("consulta", consulta);
+		return mv;
 	}
-
+	
+	@RequestMapping(value="/prontuario/{codigo}", method = RequestMethod.POST)
+	public String formProntuarioPost(@PathVariable("codigo") long codigo,  Prontuario prontuario, BindingResult result, RedirectAttributes attributes){
+		ModelAndView mv = new ModelAndView("");
+		Consulta consulta = cr.findByCodigo(codigo);
+		mv.addObject("consulta", consulta);
+		
+		Paciente paciente = consulta.getPaciente();
+		prontuario.setPaciente(paciente);
+		
+		Procedimento procedimento = consulta.getProcedimento();
+		prontuario.setProcedimento(procedimento);
+		
+		LocalDateTime now = LocalDateTime.now();
+		String data = now.toString();
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		String newData = formatter.format(now);
+		
+		prontuario.setData(newData);
+		
+		prr.save(prontuario);
+		
+		return "redirect:/prontuario/{codigo}";
+	}
+	
 }

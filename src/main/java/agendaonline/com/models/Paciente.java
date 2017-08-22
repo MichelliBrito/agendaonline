@@ -33,6 +33,9 @@ public class Paciente implements Serializable{
 	@ManyToOne //Muitos pacientes para um convenio, ou seja, Many=paciente to One=convenio.
 	private Convenio convenio;
 	
+	@OneToMany
+	private List<Prontuario> prontuarios;
+	
 	private String endereco;
 	private int numero;
 	private String bairro;

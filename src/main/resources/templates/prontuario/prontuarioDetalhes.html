@@ -25,7 +25,7 @@
 		     
 		      <div class="menu-itens">
 			      <ul class="menuesquerda left hide-on-med-and-down">
-			        <li><a href="#">Agenda - Dr. Michelli</a></li>
+			        <li><a href="#">Prontuário - Dr. Michelli</a></li>
 			        <li><div class="botao"><a href="/agendarconsulta" class="waves-effect waves-light btn"><i class="material-icons left">add_circle</i>Agendar Consulta</a></div></li>
 			        <li><div class="botao"><a class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Espera</a></div></li>
 			      </ul>
@@ -50,19 +50,15 @@
 	  <section class="conteudo" th:fragment="conteudo"> <!-- section com conteudo criado aqui nesta mesma página -->
 		  <!-- Conteudo -->
 		  <div class="container cabecalho">
-			  <div class="row" th:each="consulta : ${consulta}">
-			  
-			  	<h4><span th:text="${consulta.procedimento.tipoProcedimento}"></span>    <a  th:href="${(#mvc.url('AC#formProntuario').arg(0, consulta.codigo)).build()}" class="waves-effect waves-light btn"><i class="material-icons left">play_circle_outline</i>Iniciar</a></h4>
+			  <div class="row" th:each="prontuario : ${prontuario}">
 			  
 			  		<div class="input-field col s6">			
 		
-			  			<p>Paciente: <span th:text="${consulta.paciente.nome}"></span></p>
+			  			<p>Paciente: <span th:text="${prontuario.paciente.nome}"></span></p>
 			  			
-			  			<p>Data:  <span th:text="${consulta.data}"></span></p>
-			  		
-			  			<p>Início:  <span th:text="${consulta.horarioInicio}"></span> horas</p>
+			  			<p>Procedimento: <span th:text="${prontuario.procedimento.tipoProcedimento}"></span></p>
 			  			
-			  			<p>Término:  <span th:text="${consulta.horarioTermino}"></span> horas</p>
+			  			<p>Data:  <span th:text="${prontuario.data}"></span></p>
 			  			
 			  			<a class="waves-effect waves-light btn-small editar"><i class="material-icons left">edit</i>Editar</a>
 				  			
@@ -70,16 +66,22 @@
 			  		
 			  		</div>	
 			  		
-			  		<div class="input-field col s6">
-			  			
-			  			<p>Status:  <span th:text="${consulta.status}"></span></p>
-			  			
-			  			<p>Observação:  <span th:text="${consulta.observacao}"></span></p>
-			  		
-			  		</div>
-			  		
 			  	</div>
-		 </div>
+		  </div>
+		  
+		  <div class="container">
+		  	<h3>Detalhes</h3>
+		  	<div class="row" th:each="prontuario : ${prontuario}">
+		  		<p>Anamnese: <span th:text="${prontuario.anamnese}"></span></p>
+		  		<p>Diagnóstico: <span th:text="${prontuario.diagnostico}"></span></p>
+		  		<p>Procedimento Realizado: <span th:text="${prontuario.procedimentoRealizado}"></span></p>
+		  		<p>Prescrição de Remédios: <span th:text="${prontuario.prescricaoRemedios}"></span></p>
+		  		<p>Prescrição de Exames: <span th:text="${prontuario.prescricaoExames}"></span></p>
+		  		<p>Resultados: <span th:text="${prontuario.resultados}"></span></p>
+		  		<p>Observação: <span th:text="${prontuario.observacao}"></span></p>
+		  
+		  	</div>
+		  </div>
 	  </section>
   
 
