@@ -88,8 +88,7 @@
 }
 
 .form{
-	padding-left: 300px;
-	box-shadow: 0px 0px 5px grey;
+    padding-left: 300px;
 }
 
 .formProntuario{
@@ -97,7 +96,7 @@
     padding-left: 20px;
     padding-top: 10px;
     padding-bottom: 5px;
-    margin: 85px;
+    margin: 50px 85px 50px 85px;
     box-shadow: 0px 0px 5px grey;
 }
 

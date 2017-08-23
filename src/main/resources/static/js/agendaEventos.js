@@ -20,6 +20,8 @@ $(document).ready(function() {
 		defaultDate: dataAtual,		
 		editable: true,
 		eventLimit: true,
+		minTime: "06:00:00",
+		maxTime: "22:00:00",
 		lang:'pt-br',
 		buttonText: {
 		    today: 'Hoje',
