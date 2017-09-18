@@ -52,7 +52,7 @@
 		  <div class="container cabecalho">
 			  <div class="row" th:each="consulta : ${consulta}">
 			  
-			  	<h4><span th:text="${consulta.procedimento.tipoProcedimento}"></span>    <a  th:href="${(#mvc.url('AC#formProntuario').arg(0, consulta.codigo)).build()}" class="waves-effect waves-light btn"><i class="material-icons left">play_circle_outline</i>Iniciar</a></h4>
+			  	<h4><span th:text="${consulta.procedimento.tipoProcedimento}"></span>    <a  th:href="${(#mvc.url('AC#formProntuario').arg(0, consulta.codigo)).build()}" class="waves-effect waves-light btn botaoConsulta"><i class="material-icons left">play_circle_outline</i>Iniciar</a></h4>
 			  
 			  		<div class="input-field col s6">			
 		
@@ -92,7 +92,7 @@
 	  <script th:src="@{/js/agendaEventos.js}"></script>
 	  
   	  <!-- <script src="jquery/jquery-3.2.1.js"></script> -->
-	  <!--  <script src="jquery/main.js"></script>-->
+	  <script src="jquery/main.js"></script>
       <script type="text/javascript" th:src="@{/materialize/js/materialize.min.js}"></script>
       
 </body>

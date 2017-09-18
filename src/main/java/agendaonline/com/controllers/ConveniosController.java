@@ -36,17 +36,13 @@ public class ConveniosController {
 //		return "convenio/listaConvenios";
 //	}
 	
-	@RequestMapping(value="/cadastroconvenio", method=RequestMethod.GET)
-	public String cadastroConvenio(){
-		return "convenio/cadastroConvenio";
-	}
 	
-	@RequestMapping(value="/cadastroconvenio", method=RequestMethod.POST)
+	@RequestMapping(value="/convenios", method=RequestMethod.POST)
 	public String cadastroConvenio(Convenio convenio, BindingResult result, RedirectAttributes attributes){
-		if(result.hasErrors()){
-			attributes.addFlashAttribute("mensagem", "Verifique os campos digitados!");
-			return cadastroConvenio();
-		}
+//		if(result.hasErrors()){
+//			attributes.addFlashAttribute("mensagem", "Verifique os campos digitados!");
+//			return listaConvenios();
+//		}
 		cr.save(convenio);
 		return "redirect:/convenios";
 	}

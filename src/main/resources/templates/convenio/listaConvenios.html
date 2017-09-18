@@ -24,7 +24,7 @@
 		      <div class="menu-itens">
 			      <ul class="menuesquerda left hide-on-med-and-down">
 			        <li><a href="#">Convênios</a></li>
-			        <li><div class="botao"><a href="/cadastroconvenio" class="waves-effect waves-light btn"><i class="material-icons left">add_circle</i>Cadastrar Convênio</a></div></li>
+			        <li><div class="botao"><a href="#modal4" class="waves-effect waves-light btn modal-trigger"><i class="material-icons left">add_circle</i>Cadastrar Convênio</a></div></li>
 			      </ul>
 			      <ul id="nav-mobile" class="menudireita right hide-on-med-and-down">
 			        <li><a href="#">Login</a></li>
@@ -63,6 +63,26 @@
 			</tbody>
 		  </table>
 	  </section>
+	  
+	  <!-- Modal Structure -->
+	  <div id="modal4" class="modal">
+	    <div class="modal-content">
+	      <!-- Conteudo -->
+		  <form  method="post" th:object="${convenio}">
+				<div class=""> 
+					  <div class="row"> 
+					  		<div class="input-field col s6">
+						  		Convênio: <input type="text" value="" class="form-control" id="" name="nomeConvenio"/>
+						  	</div>
+					  </div>
+					  <div class="modal-footer">
+					  	  <button class="btn waves-effect waves-light modal-action modal-close" type="submit">Salvar</button>
+					      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+					  </div>
+			   </div> 
+		  </form>
+	    </div>
+	  </div>
   
   <!--Import jQuery before materialize.js-->
   	  <script src="jquery/jquery-3.2.1.js"></script>

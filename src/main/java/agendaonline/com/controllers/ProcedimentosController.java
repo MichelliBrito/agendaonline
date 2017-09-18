@@ -25,17 +25,12 @@ public class ProcedimentosController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/cadastroprocedimento", method=RequestMethod.GET)
-	public String cadastroProcedimento(){
-		return "procedimentos/cadastroProcedimento";
-	}
-	
-	@RequestMapping(value="/cadastroprocedimento", method=RequestMethod.POST)
+	@RequestMapping(value="/procedimentos", method=RequestMethod.POST)
 	public String cadastroProcedimento(Procedimento procedimento, BindingResult result, RedirectAttributes attributes){
-		if(result.hasErrors()){
-			attributes.addFlashAttribute("mensagem", "Verifique os campos digitados!");
-			return cadastroProcedimento();
-		}
+//		if(result.hasErrors()){
+//			attributes.addFlashAttribute("mensagem", "Verifique os campos digitados!");
+//			return cadastroProcedimento();
+//		}
 		pr.save(procedimento);
 		return "redirect:/procedimentos";
 	}
