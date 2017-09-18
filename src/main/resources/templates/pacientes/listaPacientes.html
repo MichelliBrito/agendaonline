@@ -24,7 +24,7 @@
 		      <div class="menu-itens">
 			      <ul class="menuesquerda left hide-on-med-and-down">
 			        <li><a href="#">Pacientes</a></li>
-			        <li><div class="botao"><a href="/cadastrarpaciente" class="waves-effect waves-light btn"><i class="material-icons left">add_circle</i>Cadastrar Paciente</a></div></li>
+			        <li><div class="botao"><a href="#modal2" class="waves-effect waves-light btn modal-trigger"><i class="material-icons left">add_circle</i>Cadastrar Paciente</a></div></li>
 			      </ul>
 			      <ul id="nav-mobile" class="menudireita right hide-on-med-and-down">
 			        <li><a href="#">Login</a></li>
@@ -73,6 +73,86 @@
 			</tbody>
 		  </table>
 	  </section>
+	  
+	  <!-- Modal Structure -->
+	  <div id="modal2" class="modal">
+	    <div class="modal-content">
+	    <h5>Cadastrar Paciente</h5>
+	      <!-- Conteudo -->
+		  <form  method="post" th:object="${paciente}">
+				<div class=""> 
+					  <div class="row"> 
+						  	<div class="input-field col s12">
+						  		Nome: <input type="text" value="" class="form-control" id="" name="nome"/>
+						  	</div>
+					  </div>
+					  
+					  <div class="row"> 
+					  		<div class="input-field col s4">
+						  		Nascimento: <input type="date" value="dd-mm-yyyy" class="form-control" id="" name="nascimento"/>
+						  	</div>
+					  		<div class="input-field col s4">
+							    <select name="sexo">
+							      <option value="">Sexo</option>
+							      <option value="feminino">Feminino</option>
+							      <option value="masculino">Masculino</option>
+							    </select>
+							</div>
+							<div class="input-field col s4">
+							    <select name="convenio.nomeConvenio">
+							    	<option value="">Convênio</option>
+								      <option th:each="convenio : ${convenios}" th:value="${convenio.nomeConvenio}" th:text="${convenio.nomeConvenio}"></option>
+							    </select>
+							</div>
+					  </div>
+					  	
+					  <div class="row"> 
+						  	<div class="input-field col s6">
+						  		Endereço: <input type="text" value="" class="form-control" id="" name="endereco"/>
+						  	</div>
+						  	<div class="input-field col s3">
+						  		Número: <input type="text" value="" class="form-control" id="" name="numero"/>
+						  	</div>
+						  	<div class="input-field col s3">
+						  		Bairro: <input type="text" value="" class="form-control" id="" name="bairro"/>
+						  	</div>
+					  </div> 
+					  
+					  <div class="row"> 
+						  	<div class="input-field col s6">
+						  		Cidade: <input type="text" value="" class="form-control" id="" name="cidade"/>
+						  	</div>
+						  	<div class="input-field col s3">
+						  		CEP: <input type="text" value="" class="form-control" id="" name="cep"/>
+						  	</div>
+						  	<div class="input-field col s3">
+						  		Estado: <input type="text" value="" class="form-control" id="" name="estado"/>
+						  	</div>
+					  </div> 
+					  
+					  <div class="row"> 
+						  	<div class="input-field col s6">
+						  		Telefone: <input type="text" value="" class="form-control" id="" name="telefone"/>
+						  	</div>
+						  	<div class="input-field col s6">
+						  		email: <input type="text" value="" class="form-control" id="" name="email"/>
+						  	</div>
+					  </div>
+					  
+					  <div class="row"> 
+						  	<div class="input-field col s12">
+						  		Observação: <input type="text" value="" class="form-control" id="" name="observacao"/>
+						  	</div>
+					  </div>
+					  
+					  <div class="modal-footer">
+					  	  <button class="btn waves-effect waves-light modal-action modal-close" type="submit">Salvar</button>
+					      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+					  </div>
+			   </div> 
+		  </form>
+	    </div>
+	  </div>
   
   <!--Import jQuery before materialize.js-->
   	  <script src="jquery/jquery-3.2.1.js"></script>

@@ -52,11 +52,24 @@ public class AgendaController {
 	}
 	
 	@RequestMapping(value = "/agenda", method = RequestMethod.GET)
-	public ModelAndView MontaAgenda() {
+	public ModelAndView MontaAgenda(Model model) {
 		 
 		ModelAndView mv = new ModelAndView("agenda/agenda");
 
+		Iterable<Procedimento> listaProcedimentos = pr.findAll();
+		model.addAttribute("procedimentos", listaProcedimentos);
+		Iterable<Paciente> listaPacientes = par.findAll();
+		model.addAttribute("pacientes", listaPacientes);
+		
 		return mv;
+	}
+	
+	@RequestMapping(value="/agenda", method=RequestMethod.POST)
+	public String MontaAgenda(Consulta consulta){
+		cr.save(consulta);
+		Evento evento = new Evento(consulta);
+		er.save(evento);
+		return "redirect:/agenda";
 	}
 	
 	@RequestMapping(value="/getEventos.json", method = RequestMethod.GET)
@@ -65,27 +78,6 @@ public class AgendaController {
 		Iterable<Evento> listaEventos = er.findAll();
 		
 		return listaEventos;
-	}
-	
-	@RequestMapping(value="/agendarconsulta", method=RequestMethod.GET)
-	public String agendarConsulta(Model model){
-		Iterable<Procedimento> listaProcedimentos = pr.findAll();
-		model.addAttribute("procedimentos", listaProcedimentos);
-		Iterable<Paciente> listaPacientes = par.findAll();
-		model.addAttribute("pacientes", listaPacientes);
-		return "agenda/agendarConsulta";
-	}
-	
-	@RequestMapping(value="/agendarconsulta", method=RequestMethod.POST)
-	public String agendarConsulta(Consulta consulta, BindingResult result, RedirectAttributes attributes){
-//		if(result.hasErrors()){
-//		attributes.addFlashAttribute("mensagem", "Verifique os campos digitados!");
-//		return cadastrarPaciente();
-//	}		
-		cr.save(consulta);
-		Evento evento = new Evento(consulta);
-		er.save(evento);
-		return "redirect:/agenda";
 	}
 	
 	@RequestMapping(value="/consulta/{codigo}", method = RequestMethod.GET)

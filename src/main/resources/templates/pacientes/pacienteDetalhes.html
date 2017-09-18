@@ -24,7 +24,6 @@
 		      <div class="menu-itens">
 			      <ul class="menuesquerda left hide-on-med-and-down">
 			        <li><a href="#">Pacientes</a></li>
-			        <li><div class="botao"><a href="/cadastrarpaciente" class="waves-effect waves-light btn"><i class="material-icons left">add_circle</i>Cadastrar Paciente</a></div></li>
 			        <li><div class="botao"><a href="/pacientes" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Pacientes</a></div></li>
 			      </ul>
 			      <ul id="nav-mobile" class="menudireita right hide-on-med-and-down">
@@ -50,7 +49,7 @@
 		  <div class="container cabecalho">
 			  <div class="row" th:each="paciente : ${paciente}">
 			  
-			  	<h4><span th:text="${paciente.nome}"></span>    <a href="/agendarconsulta" class="waves-effect waves-light btn"><i class="material-icons left">add_circle</i>Agendar Consulta</a></h4>
+			  	<h4><span th:text="${paciente.nome}"></span></h4>
 			  
 			  		<div class="input-field col s6">			
 			  		
@@ -80,14 +79,27 @@
 			  	</div>
 		 </div>
 		 
-		 <div class="container">
-		 	<div class="row topicos" th:each="prontuario : ${prontuarios}">
-			 		<p><a th:href="${(#mvc.url('PC#prontuarioDetalhes').arg(0, prontuario.data)).build()}" class="linkNome">Prontuário:  <span th:text="${prontuario.data}"></span></a></p>
-			 		<p>Procedimento: <span th:text="${prontuario.procedimento.tipoProcedimento}"></span></p>
-			 		<a class="waves-effect waves-light btn-small editar"><i class="material-icons left">edit</i>Editar</a>		
-					<a class="waves-effect waves-light btn-small remover"><i class="material-icons left">delete</i>Remover</a>
+		 <div class="prontuarios">
+			 		<ul class="collapsible" data-collapsible="accordion" th:each="prontuario : ${prontuarios}">
+					  <li>
+					    <div class="collapsible-header">
+					      <i class="material-icons">access_time</i>
+					      <p> Prontuário: <span th:text="${prontuario.data}"></span></p>		
+					    </div>
+					    <div class="collapsible-body">
+					    	<p>Procedimento: <span th:text="${prontuario.procedimento.tipoProcedimento}"></span></p>
+					    	<p>Anamnese: <span th:text="${prontuario.anamnese}"></span></p>
+					  		<p>Diagnóstico: <span th:text="${prontuario.diagnostico}"></span></p>
+					  		<p>Procedimento Realizado: <span th:text="${prontuario.procedimentoRealizado}"></span></p>
+					  		<p>Prescrição de Remédios: <span th:text="${prontuario.prescricaoRemedios}"></span></p>
+					  		<p>Prescrição de Exames: <span th:text="${prontuario.prescricaoExames}"></span></p>
+					  		<p>Resultados: <span th:text="${prontuario.resultados}"></span></p>
+					  		<p>Observação: <span th:text="${prontuario.observacao}"></span></p>
+					  		<a class="waves-effect waves-light btn-small remover"><i class="material-icons left">delete</i>Remover</a>
+					    </div>
+					  </li>
+					</ul>
 		 	</div>
-		 </div>
 	  </section>
   
   <!--Import jQuery before materialize.js-->

@@ -120,13 +120,7 @@ table {
     box-shadow: 0px 0px 5px grey;
 }
 
-.topicos{
-	width: 90%;
-	border: 1px white;
-    padding-left: 20px;
-    padding-top: 10px;
-    padding-bottom: 5px;
-    margin: 30px 85px 30px 85px;
-    color: black;
-    box-shadow: 0px 0px 5px grey;
+.prontuarios{
+	width: 80%;
+	margin: 50px 85px 50px 85px;
 }

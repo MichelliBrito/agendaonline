@@ -26,7 +26,8 @@
 		      <div class="menu-itens">
 			      <ul class="menuesquerda left hide-on-med-and-down">
 			        <li><a href="#">Agenda - Dr. Michelli</a></li>
-			        <li><div class="botao"><a href="/agendarconsulta" class="waves-effect waves-light btn"><i class="material-icons left">add_circle</i>Agendar Consulta</a></div></li>
+			        <!-- Modal Trigger -->
+			        <li><div class="botao"><a href="#modal1" class="waves-effect waves-light btn modal-trigger"><i class="material-icons left">add_circle</i>Agendar Consulta</a></div></li>
 			        <li><div class="botao"><a class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Espera</a></div></li>
 			      </ul>
 			      <ul id="nav-mobile" class="menudireita right hide-on-med-and-down">
@@ -48,32 +49,63 @@
 	  
 	  <!-- SECTION -->
 	  <section class="conteudo" th:fragment="conteudo"> <!-- section com conteudo criado aqui nesta mesma página -->
-		  <!-- Conteudo -->
-		  <!-- 
-		  <table class="responsive-table">
-			  <thead>
-			  	<tr>
-			  			<th>Procedimento</th>
-			  			<th>Paciente</th>
-			  			<th>Editar</th>
-			  			<th>Remover</th>
-			  	</tr>
-			  </thead>
-			  <tbody>
-				  <tr th:each="consulta : ${consultas}">
-				  		
-				  			<td><span th:text="${consulta.procedimento.tipoProcedimento}"></span></td>
-				  		
-				  			<td><span th:text="${consulta.paciente.nome}"></span></td>
-				  			
-				  			<td><a class="waves-effect waves-light btn-small editar"><i class="material-icons left">edit</i>Editar</a></td>
-				  			
-				  			<td><a class="waves-effect waves-light btn-small remover"><i class="material-icons left">delete</i>Remover</a></td>
-				  </tr>
-			  </tbody>
-		  </table> -->
-		  <div clas="agenda" id='div-agenda-eventos'></div>
+		  <div class="agenda" id='div-agenda-eventos'></div>
 	  </section>
+	
+	  <!-- Modal Structure -->
+	  <div id="modal1" class="modal">
+	    <div class="modal-content">
+	    <h5>Agendar Consulta</h5>
+	      <!-- Conteudo -->
+		  <form  method="post" th:object="${consulta}">
+				<div class=""> 
+					  <div class="row"> 
+						  	<div class="input-field col s9">
+						  		<select name="paciente.nome">
+							    	<option value="">Paciente</option>
+								      <option th:each="paciente : ${pacientes}" th:value="${paciente.nome}" th:text="${paciente.nome}"></option>
+							    </select>
+						  	</div>
+					  </div>
+					  	
+					  <div class="row"> 
+						  	<div class="input-field col s3">
+						  		<select name="procedimento.tipoProcedimento">
+							    	<option value="">Procedimento</option>
+								      <option th:each="procedimento : ${procedimentos}" th:value="${procedimento.tipoProcedimento}" th:text="${procedimento.tipoProcedimento}"></option>
+							    </select>
+						  	</div>
+						  	<div class="input-field col s3">
+						  		Status: <input type="text" value="" class="form-control" id="" name="status"/>
+						  	</div>
+					  </div> 
+					  
+					  <div class="row"> 
+						  	<div class="input-field col s3">
+						  		Data: <input type="date" value="dd-mm-yyyy" class="form-control" id="" name="data"/>
+						  	</div>
+						  	<div class="input-field col s3">
+						  		Horário Início: <input type="time" value="00:00" class="form-control" id="" name="horarioInicio"/>
+						  	</div>
+						  	<div class="input-field col s3">
+						  		Horário Término: <input type="time" value="00:00" class="form-control" id="" name="horarioTermino"/>
+						  	</div>
+					  </div>
+					  
+					  <div class="row"> 
+						  	<div class="input-field col s9">
+						  		Observação: <input type="text" value="" class="form-control" id="" name="observacao"/>
+						  	</div>
+					  </div>
+					  
+					  <div class="modal-footer">
+					  	<button class="btn waves-effect waves-light modal-action modal-close" type="submit">Salvar</button>
+	     				 <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancelar</a>
+	    			  </div>
+			   </div> 
+		  </form>
+	    </div>
+	  </div>
   
 
   	
@@ -85,7 +117,7 @@
 	  <script src="js/agendaEventos.js"></script>
 	  
   	  <!-- <script src="jquery/jquery-3.2.1.js"></script> -->
-	  <!--  <script src="jquery/main.js"></script>-->
+	  <script src="jquery/main.js"></script>
       <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
       
 </body>

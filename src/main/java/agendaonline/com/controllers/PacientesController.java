@@ -29,23 +29,20 @@ public class PacientesController {//terminar, colocar remove e edite
 	@Autowired
 	private ProntuariosRepository prr;
 	
-	@RequestMapping("/pacientes")
-	public ModelAndView listaPacientes(){
+	@RequestMapping(value="/pacientes", method=RequestMethod.GET)
+	public ModelAndView listaPacientes(Model model){
 		ModelAndView mv = new ModelAndView("pacientes/listaPacientes");
 		Iterable<Paciente> listaPacientes = pr.findAll();
 		mv.addObject("pacientes", listaPacientes);
+		
+		Iterable<Convenio> listaConvenio = cr.findAll();
+		model.addAttribute("convenios", listaConvenio);
+		
 		return mv;
 	}
 	
-	@RequestMapping(value="/cadastrarpaciente", method=RequestMethod.GET)
-	public String cadastrarPaciente(Model model){
-		Iterable<Convenio> listaConvenio = cr.findAll();
-		model.addAttribute("convenios", listaConvenio);
-		return "pacientes/cadastrarPaciente";
-	}
-	
-	@RequestMapping(value="/cadastrarpaciente", method=RequestMethod.POST)
-	public String cadastrarPaciente(Paciente paciente, BindingResult result, RedirectAttributes attributes){
+	@RequestMapping(value="/pacientes", method=RequestMethod.POST)
+	public String listaPacientes(Paciente paciente, BindingResult result, RedirectAttributes attributes){
 //		if(result.hasErrors()){
 //			attributes.addFlashAttribute("mensagem", "Verifique os campos digitados!");
 //			return cadastrarPaciente();
@@ -57,22 +54,14 @@ public class PacientesController {//terminar, colocar remove e edite
 	
 	@RequestMapping(value="/paciente/{nome}", method = RequestMethod.GET)
 	public ModelAndView detalhes(@PathVariable("nome") String nome){
+
 		ModelAndView mv = new ModelAndView("pacientes/pacienteDetalhes");
 		Paciente paciente = pr.findOne(nome);
 		mv.addObject("paciente", paciente);
 		
 		Iterable<Prontuario> prontuarios = prr.findByPaciente(paciente);
 		mv.addObject("prontuarios", prontuarios);
-		return mv;
-	}
-	
-	@RequestMapping(value="/prontuario/detalhes/{data}", method = RequestMethod.GET)
-	public ModelAndView prontuarioDetalhes(@PathVariable("data") String data){
-		ModelAndView mv = new ModelAndView("prontuario/prontuarioDetalhes");
-		System.out.println("data" + data);
-		Prontuario prontuario = prr.findByData(data);
-		mv.addObject("prontuario", prontuario);
-		System.out.println("prontuariooo" + prontuario);
+		
 		return mv;
 	}
 }
