@@ -26,7 +26,7 @@
 		      <div class="menu-itens">
 			      <ul class="menuesquerda left hide-on-med-and-down">
 			        <li><a href="#">Agenda - Dr. Michelli</a></li>
-			        <li><div class="botao"><a href="/agendarconsulta" class="waves-effect waves-light btn"><i class="material-icons left">add_circle</i>Agendar Consulta</a></div></li>
+			        <li><div class="botao"><a href="/agenda" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Consultas</a></div></li>
 			        <li><div class="botao"><a class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Espera</a></div></li>
 			      </ul>
 			      <ul id="nav-mobile" class="menudireita right hide-on-med-and-down">
@@ -52,7 +52,7 @@
 		  <div class="container cabecalho">
 			  <div class="row" th:each="consulta : ${consulta}">
 			  
-			  	<h4><span th:text="${consulta.procedimento.tipoProcedimento}"></span>    <a  th:href="${(#mvc.url('AC#formProntuario').arg(0, consulta.codigo)).build()}" class="waves-effect waves-light btn botaoConsulta"><i class="material-icons left">play_circle_outline</i>Iniciar</a></h4>
+			  	<h4><span th:text="${consulta.procedimento.tipoProcedimento}"></span>    <a  href="#modal6" class="waves-effect waves-light btn modal-trigger iniciar"><i class="material-icons left">add_circle</i>Iniciar Prontuário</a> <a href="/agenda" class="waves-effect waves-light btn finalizar"><i class="material-icons left">stop</i>Finalizar Consulta</a></h4>
 			  
 			  		<div class="input-field col s6">			
 		
@@ -81,6 +81,58 @@
 			  	</div>
 		 </div>
 	  </section>
+	  
+	  <!-- Modal Structure -->
+	  <div id="modal6" class="modal">
+	    <div class="modal-content">
+	      <form  method="post" th:object="${prontuario}">
+		 		<h5>Prontuário</h5>
+				<div class="container formProntuario"> 
+					
+					  <div class="row"> 
+					  		<div class="input-field col s12">
+						  		Anamnese: <input type="text" value="" class="form-control" id="" name="anamnese"/>
+						  	</div>
+					  </div>
+					  <div class="row"> 
+					  		<div class="input-field col s12">
+						  		Diagnóstico: <input type="text" value="" class="form-control" id="" name="diagnostico"/>
+						  	</div>
+					  </div>
+					  <div class="row"> 
+					  		<div class="input-field col s12">
+						  		Procedimento realizado: <input type="text" value="" class="form-control" id="" name="procedimentoRealizado"/>
+						  	</div>
+					  </div>
+					  <div class="row"> 
+					  		<div class="input-field col s12">
+						  		Prescrição de Remédios: <input type="text" value="" class="form-control" id="" name="prescricaoRemedios"/>
+						  	</div>
+					  </div>
+					  <div class="row"> 
+					  		<div class="input-field col s12">
+						  		Prescrição de Exames: <input type="text" value="" class="form-control" id="" name="prescricaoExames"/>
+						  	</div>
+					  </div>
+					  <div class="row"> 
+					  		<div class="input-field col s12">
+						  		Resultados: <input type="text" value="" class="form-control" id="" name="resultados"/>
+						  	</div>
+					  </div>
+					  <div class="row"> 
+					  		<div class="input-field col s12">
+						  		Observação: <input type="text" value="" class="form-control" id="" name="observacao"/>
+						  	</div>
+					  </div>
+					   <div class="modal-footer">
+					   	 <button class="btn waves-effect waves-light salvar" type="submit">Salvar</button>
+					   	 
+	     				 <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+	   				   </div>
+			   </div> 
+		  </form>
+	    </div>
+	  </div>
   
 
   	
@@ -92,7 +144,7 @@
 	  <script th:src="@{/js/agendaEventos.js}"></script>
 	  
   	  <!-- <script src="jquery/jquery-3.2.1.js"></script> -->
-	  <script src="jquery/main.js"></script>
+	  <script th:src="@{/jquery/main.js}"></script>
       <script type="text/javascript" th:src="@{/materialize/js/materialize.min.js}"></script>
       
 </body>

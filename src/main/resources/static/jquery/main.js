@@ -23,5 +23,13 @@ $(document).ready(function(){
 $(document).ready(function(){
     $('.collapsible').collapsible();
   });
-  
 
+
+
+$(document).ready(function(){
+	$('.salvar').click(function(){
+		
+		confirm("Tem certeza que deseja salvar este prontuário? Depois de salvar não é possível fazer alterações!");
+		
+	});
+});

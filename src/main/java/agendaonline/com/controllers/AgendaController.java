@@ -88,19 +88,19 @@ public class AgendaController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/prontuario/{codigo}", method = RequestMethod.GET)
-	public ModelAndView formProntuario(@PathVariable("codigo") long codigo){
-		ModelAndView mv = new ModelAndView("prontuario/form");
-		Consulta consulta = cr.findByCodigo(codigo);
-		mv.addObject("consulta", consulta);
-		return mv;
-	}
+//	@RequestMapping(value="/prontuario/{codigo}", method = RequestMethod.GET)
+//	public ModelAndView formProntuario(@PathVariable("codigo") long codigo){
+//		ModelAndView mv = new ModelAndView("prontuario/form");
+//		Consulta consulta = cr.findByCodigo(codigo);
+//		mv.addObject("consulta", consulta);
+//		return mv;
+//	}
 	
-	@RequestMapping(value="/prontuario/{codigo}", method = RequestMethod.POST)
+	@RequestMapping(value="/consulta/{codigo}", method = RequestMethod.POST)
 	public String formProntuarioPost(@PathVariable("codigo") long codigo,  Prontuario prontuario, BindingResult result, RedirectAttributes attributes){
-		ModelAndView mv = new ModelAndView("");
+	
 		Consulta consulta = cr.findByCodigo(codigo);
-		mv.addObject("consulta", consulta);
+		
 		
 		Paciente paciente = consulta.getPaciente();
 		prontuario.setPaciente(paciente);
@@ -118,7 +118,7 @@ public class AgendaController {
 		
 		prr.save(prontuario);
 		
-		return "redirect:/prontuario/{codigo}";
+		return "redirect:/consulta/{codigo}";
 	}
 	
 }
