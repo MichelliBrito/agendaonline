@@ -1,4 +1,4 @@
-package agendaonline.com;
+package agendaonline.com.data;
 
 import javax.sql.DataSource;
 
