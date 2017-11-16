@@ -45,12 +45,6 @@ public class AgendaController {
 	@Autowired
 	private ProntuariosRepository prr;
 	
-	@RequestMapping(value = "/teste", method = RequestMethod.GET)
-	public String Teste() {
-
-		return "dashboard";
-	}
-	
 	@RequestMapping(value = "/agenda", method = RequestMethod.GET)
 	public ModelAndView MontaAgenda(Model model) {
 		 
