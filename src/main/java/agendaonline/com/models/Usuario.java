@@ -1,35 +1,60 @@
 package agendaonline.com.models;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Columns;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-public class Usuario implements UserDetails {
+public class Usuario implements UserDetails, Serializable{
+	
+private static final long serialVersionUID = 1L;
+	
+	@GeneratedValue(strategy= GenerationType.AUTO)
+	private long codigo;
 	
 	@Id
-	@NotEmpty
 	private String nome;
 	
 	@NotEmpty
 	private String senha;
 	
-	@OneToMany(fetch=FetchType.EAGER)
-    private List<Role> roles = new ArrayList<Role>();
-	
+	//@JoinTable(name="usuario_roles", joinColumns = @JoinColumn (name="usuario_nome"), inverseJoinColumns = @JoinColumn(name="roles_nome_role"))
+	@ManyToMany
+	@JoinTable( 
+	        name = "usuarios_roles", 
+	        joinColumns = @JoinColumn(
+	          name = "usuario_id", referencedColumnName = "nome"), 
+	        inverseJoinColumns = @JoinColumn(
+	          name = "role_id", referencedColumnName = "nomeRole")) 
+    private List<Role> roles;
+		
+	public long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(long codigo) {
+		this.codigo = codigo;
+	}
+
 	public String getNome() {
 		return nome;
 	}

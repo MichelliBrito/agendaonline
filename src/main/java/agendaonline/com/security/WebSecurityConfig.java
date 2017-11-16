@@ -26,6 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.antMatchers(HttpMethod.GET, "/agenda").permitAll()
 			.antMatchers(HttpMethod.GET, "/login").permitAll()
 			.antMatchers(HttpMethod.POST, "/login").permitAll()
+			.antMatchers(HttpMethod.GET, "/pacientes").hasRole("ADMIN")
 			.anyRequest().authenticated()
 			.and().formLogin().permitAll()
 		    .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
@@ -33,8 +34,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		 auth.inMemoryAuthentication()
-//         .withUser("admin").password("123456").roles("ADMIN");
 		auth.userDetailsService(iuds)
         .passwordEncoder(new BCryptPasswordEncoder());
 	}
