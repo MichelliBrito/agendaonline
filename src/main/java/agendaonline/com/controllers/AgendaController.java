@@ -60,6 +60,7 @@ public class AgendaController {
 	
 	@RequestMapping(value="/agenda", method=RequestMethod.POST)
 	public String MontaAgenda(Consulta consulta){
+		consulta.setStatus(true);
 		cr.save(consulta);
 		Evento evento = new Evento(consulta);
 		er.save(evento);

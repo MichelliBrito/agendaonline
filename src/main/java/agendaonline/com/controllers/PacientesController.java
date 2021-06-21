@@ -56,7 +56,7 @@ public class PacientesController {//terminar, colocar remove e edite
 	public ModelAndView detalhes(@PathVariable("nome") String nome){
 
 		ModelAndView mv = new ModelAndView("pacientes/pacienteDetalhes");
-		Paciente paciente = pr.findOne(nome);
+		Paciente paciente = pr.findByNome(nome);
 		mv.addObject("paciente", paciente);
 		
 		Iterable<Prontuario> prontuarios = prr.findByPaciente(paciente);

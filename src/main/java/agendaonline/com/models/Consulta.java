@@ -25,7 +25,7 @@ public class Consulta implements Serializable {
 	@ManyToOne
 	private Procedimento procedimento;
 	
-	private boolean status;
+	private boolean status = true;
 	
 	@DateTimeFormat(pattern="dd-mm-yyyy")
 	private String data;
